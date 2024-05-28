@@ -1,8 +1,10 @@
-import { client, urlFor } from "@/lib/sanity"
+import { client, urlFor } from "@/lib/sanity";
+import dayjs from 'dayjs';
 import { fullBlog } from "@/lib/interface";
 import Image from "next/image";
-import { Separator } from "@/components/ui/separator"
-import { PortableText } from "next-sanity";
+import { Separator } from "@/components/ui/separator";
+import BlogContent from "@/app/components/BlogContent";
+import SharetoSocial from "@/app/components/ShareToSocial";
 
 export const revalidate = 30 // revalidate at most every 30 seconds
 
@@ -12,10 +14,10 @@ async function getData(slug : string) {
           title,
           content,
           titleImage,
-          author->{authorName, authorDescription, authorImage}
+          author->{authorName, authorDescription, authorImage},
+          publishedAt
       }[0]`;
     const data = await client.fetch(query);
-    console.log(data.content);
     return data;
 }
 
@@ -23,9 +25,10 @@ export default async function BlogArticle({ params }: { params: { slug: string }
     const data: fullBlog = await getData(params.slug);
     return (
         <div className="mt-8">
-            <h1 className="scroll-m-20 text-4xl font-bold lg:text-5xl">
+            <h1 className="scroll-m-20 text-4xl/[3rem] font-bold lg:text-5xl/[4rem]">
                 {data.title}
             </h1>
+            <p className="text-lg mt-4">Published on {dayjs(data.publishedAt).format('D MMMM YYYY')}</p>
             <Image 
                 src={urlFor(data.titleImage).url()} 
                 alt="image" 
@@ -42,8 +45,9 @@ export default async function BlogArticle({ params }: { params: { slug: string }
                 </div>
             </div>
             <Separator />
+            <SharetoSocial />
             <div className="mt-10 prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary">
-                <PortableText value={data.content}/>
+                <BlogContent content={data.content} />
             </div>
         </div>
     )
