@@ -21,9 +21,11 @@ export default function Navbar() {
                 </div>
             </Link>
             <div>
+            <Link href="/">
             <div className="space-y-1">
                 <h1 className="font-semibold text-4xl leading-none">อาจาน<span className="text-primary">พอล</span></h1>
             </div>
+            </Link>
             <Separator className="my-2" />
             <div className="flex h-5 items-center space-x-4 text-md">
                 <Link href="/">

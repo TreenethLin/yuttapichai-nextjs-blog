@@ -10,7 +10,8 @@ export interface fullBlog {
     title: string,
     content: [],
     titleImage: object,
-    author: Author
+    author: Author,
+    publishedAt: string;
 }
 
 interface Author {
@@ -19,11 +20,16 @@ interface Author {
     authorImage: object
 }
 
-export interface ImageBlock {
-    node: {
+export interface ImageProps {
+    value: {
       asset: {
         _ref: string;
       };
       alt?: string;
     };
-}
+  };
+  
+export interface BlogContentProps {
+    content: [];
+};
+  
