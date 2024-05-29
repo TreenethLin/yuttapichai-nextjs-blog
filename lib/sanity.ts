@@ -13,3 +13,8 @@ const builder = imageUrlBuilder(client);
 export function urlFor(source: object) {
     return builder.image(source);
 }
+
+export async function getData(query: string, slug?: string) {
+    const data = await client.fetch(query)
+    return data;
+}

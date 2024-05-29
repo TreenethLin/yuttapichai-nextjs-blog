@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { simpleBlogCard } from "@/lib/interface";
-import { client, urlFor } from "@/lib/sanity";
+import { urlFor, getData } from "@/lib/sanity";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,18 +9,14 @@ import { ShortProfile } from './components/ShortProfile';
 
 export const revalidate = 30 // revalidate at most every 30 seconds
 
-async function getData() {
+export default async function Home() {
   const query = `*[_type == 'blog'] | order(_createdAt desc) {
     title,
     smallDescription,
     "currentSlug" : slug.current,
     titleImage
   }`
-  const data = await client.fetch(query)
-  return data;
-}
-export default async function Home() {
-  const data: simpleBlogCard[] = await getData()
+  const data: simpleBlogCard[] = await getData(query);
 
   return (
     <React.Fragment>

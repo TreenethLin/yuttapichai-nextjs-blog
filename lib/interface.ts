@@ -20,6 +20,13 @@ interface Author {
     authorImage: object
 }
 
+export interface SetMetadata {
+    title: string,
+    titleImage: object,
+    smallDescription: string
+}
+
+
 export interface ImageProps {
     value: {
       asset: {
