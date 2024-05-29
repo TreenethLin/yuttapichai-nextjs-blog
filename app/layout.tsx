@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Sarabun } from "next/font/google";
 import Navbar from "./components/Navbar";
-import { ShortProfile } from "./components/ShortProfile";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Loading from "./loading"
@@ -26,8 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      </head>
       <body className={sarabun.className}>
-        
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
