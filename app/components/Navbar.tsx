@@ -29,11 +29,11 @@ export default function Navbar() {
             <Separator className="my-2" />
             <div className="flex h-5 items-center space-x-4 text-md">
                 <Link href="/">
-                <div className="hover:underline">Home</div>
+                <div className="hover:underline">Blog</div>
                 </Link>
                 <Separator orientation="vertical" />
-                <Link href="/#blog">
-                <div className="hover:underline">Blog</div>
+                <Link href="/gallery">
+                <div className="hover:underline">Gallery</div>
                 </Link>
                 <Separator orientation="vertical" />
                 <Link href="/cv">
