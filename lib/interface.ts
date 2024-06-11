@@ -39,4 +39,16 @@ export interface ImageProps {
 export interface BlogContentProps {
     content: [];
 };
-  
+
+export interface Photo {
+  title: string;
+  image: any;
+  altText: string;
+}
+
+export interface Gallery {
+  title: string;
+  description: string;
+  photos: Photo[];
+}
+
